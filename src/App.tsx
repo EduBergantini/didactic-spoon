@@ -1,13 +1,13 @@
 import React from "react"
 
 import GlobalStyles from "./styles/GlobalStyles";
-import Dashboard from "./pages/dashboard";
+import Layout from "./components/layout";
 
 const App: React.FC = () => {
     return (
         <>
             <GlobalStyles />
-            <Dashboard />
+            <Layout />
         </>
     )
 }
