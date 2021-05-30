@@ -5,12 +5,17 @@ export const ContainerHeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
 `;
-export const Title = styled.h2`
+interface ITitleProps {
+    lineColor: string;
+}
+export const Title = styled.h2<ITitleProps>`
     &::after {
         content: '';
         display: block;
         width: 55px;
-        border-bottom: 10px solid ${props => props.theme.colors.warning};
+        border-bottom: 10px solid ${props => props.lineColor};
     }
 `;
-export const FiltersControl = styled.div``;
+export const FiltersControl = styled.div`
+    display: flex;
+`;
