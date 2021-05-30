@@ -4,14 +4,14 @@ import Content from "../content";
 import MainHeader from "../main-header";
 import { LayoutGrid } from "./styles";
 
-const Layout: React.FC = () => {
+const Layout: React.FC = ({children}) => {
     return (
         <LayoutGrid>
-            <MainHeader>
-                
-            </MainHeader>
+            <MainHeader></MainHeader>
             <Aside></Aside>
-            <Content></Content>
+            <Content>
+                {children}
+            </Content>
         </LayoutGrid>
     );
 };
