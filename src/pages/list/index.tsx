@@ -1,10 +1,27 @@
-import React from "react"
+import React, {useMemo} from "react"
 import ContentHeader from "../../components/content-header";
 import HistoryCard from "../../components/history-card";
 import SelectInput from "../../components/select-input";
 import { ListContainer, FilterContainer, ListContent } from "./styles";
 
-const Dashboard: React.FC = () => {
+interface IListProps {
+    match: {
+        params: {
+            type: string;
+        }
+    }
+}
+
+const List: React.FC<IListProps> = ({ match }) => {
+
+    const {type} = match.params;
+    const title = useMemo(() => {
+        return {
+            text: type === "entradas" ? "Entradas": "Saídas",
+            color: type === "entradas" ? "#f7931b" : "#e44c4e"
+        }
+    }, [type]);
+
     const months = [
         {value: 1, label: "Janeiro"},
         {value: 2, label: "Fevereiro"},
@@ -29,7 +46,7 @@ const Dashboard: React.FC = () => {
 
     return (
         <ListContainer>
-            <ContentHeader title="Dashboard" lineColor="#e44c4e">
+            <ContentHeader title={title.text} lineColor={title.color}>
                 <SelectInput options={months}/>
                 <SelectInput options={years}/>
             </ContentHeader>
@@ -44,4 +61,4 @@ const Dashboard: React.FC = () => {
     );
 };
 
-export default Dashboard;
+export default List;
