@@ -2,7 +2,7 @@ import React from "react"
 import ContentHeader from "../../components/content-header";
 import HistoryCard from "../../components/history-card";
 import SelectInput from "../../components/select-input";
-import { ListContainer, ListContent } from "./styles";
+import { ListContainer, FilterContainer, ListContent } from "./styles";
 
 const Dashboard: React.FC = () => {
     const months = [
@@ -25,7 +25,7 @@ const Dashboard: React.FC = () => {
         {value: 2020, label: "2020"},
         {value: 2019, label: "2019"},
         {value: 2018, label: "2018"},
-    ]
+    ];
 
     return (
         <ListContainer>
@@ -33,6 +33,10 @@ const Dashboard: React.FC = () => {
                 <SelectInput options={months}/>
                 <SelectInput options={years}/>
             </ContentHeader>
+            <FilterContainer>
+                <button type="button" className="tag-filter tag-filter-recurrent">Recorrentes</button>
+                <button type="button" className="tag-filter tag-filter-eventual">Eventuais</button>
+            </FilterContainer>
             <ListContent>
                 <HistoryCard tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
             </ListContent>
