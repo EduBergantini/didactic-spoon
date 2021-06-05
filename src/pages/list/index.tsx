@@ -21,54 +21,7 @@ const Dashboard: React.FC = () => {
                 <SelectInput options={options}/>
             </ContentHeader>
             <ListContent>
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
-                <HistoryCard cardColor="#313862" tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
+                <HistoryCard tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
             </ListContent>
         </ListContainer>
     );
