@@ -27,7 +27,7 @@ const Aside: React.FC = () => {
                     Saídas
                 </MenuItemLink>
 
-                <MenuItemLink href="#" title="Link para sair da aplicação">
+                <MenuItemLink href="/sair" title="Link para sair da aplicação">
                     <MdExitToApp />
                     Sair
                 </MenuItemLink>
