@@ -28,6 +28,11 @@ export const HistoryCardContainer = styled.li`
         justify-content: space-between;
         padding-left: 10px;
 
+        > span {
+            font-size: 22px;
+            font-weight: 500
+        }
+
     }
 
 
