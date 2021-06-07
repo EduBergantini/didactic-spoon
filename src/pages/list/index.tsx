@@ -81,8 +81,8 @@ const List: React.FC<IListProps> = ({ match }) => {
     return (
         <ListContainer>
             <ContentHeader title={title.text} lineColor={title.color}>
-                <SelectInput options={months}/>
-                <SelectInput options={years}/>
+                <SelectInput options={months} onSelectInputChange={e => console.log(e.target.value)}/>
+                <SelectInput options={years}  onSelectInputChange={e => console.log(e.target.value)}/>
             </ContentHeader>
             <FilterContainer>
                 <button type="button" className="tag-filter tag-filter-recurrent">Recorrentes</button>
