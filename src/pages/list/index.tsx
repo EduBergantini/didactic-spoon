@@ -1,8 +1,13 @@
-import React, {useMemo} from "react"
+import React, {useEffect, useMemo, useState} from "react"
+
 import ContentHeader from "../../components/content-header";
 import HistoryCard from "../../components/history-card";
 import SelectInput from "../../components/select-input";
 import { ListContainer, FilterContainer, ListContent } from "./styles";
+
+import gains from "../../repositories/gains";
+import expenses from "../../repositories/expenses";
+import formatToCurrency from "../../utils/format-currency";
 
 interface IListProps {
     match: {
@@ -12,14 +17,43 @@ interface IListProps {
     }
 }
 
+interface IListData {
+    id: number,
+    description: string;
+    amount: number;
+    frequency: string;
+    date: Date;
+    tagColor: string;
+
+}
+
 const List: React.FC<IListProps> = ({ match }) => {
 
+    const [data, setData] = useState<IListData[]>([]);
     const {type} = match.params;
+
     const title = useMemo(() => {
         return {
             text: type === "entradas" ? "Entradas": "Saídas",
             color: type === "entradas" ? "#f7931b" : "#e44c4e"
         }
+    }, [type]);
+
+    useEffect(() => {
+        const requestData = type === "entradas" ? gains : expenses;
+        const listData = requestData.map((item, index) => {
+            return {
+                id: index,
+                description: item.description,
+                amount: parseFloat(item.amount),
+                frequency: item.frequency,
+                date: new Date(item.date),
+                tagColor: item.frequency === "recorrente" ? "#4e41f0" : "#e44c4e"
+            }
+        })
+
+        setData(listData);
+
     }, [type]);
 
     const months = [
@@ -55,7 +89,17 @@ const List: React.FC<IListProps> = ({ match }) => {
                 <button type="button" className="tag-filter tag-filter-eventual">Eventuais</button>
             </FilterContainer>
             <ListContent>
-                <HistoryCard tagColor="#e44c4e" title="Conta de Luz" subtitle="01/01/2001" amount="R$ 79,98" />
+            {
+                data.map(item => (
+                    <HistoryCard
+                                 key={item.id}
+                                 tagColor={item.tagColor}
+                                 title={item.description}
+                                 subtitle={item.date.toLocaleDateString("pt-BR")}
+                                 amount={formatToCurrency(item.amount)} />)
+                )
+            }
+                
             </ListContent>
         </ListContainer>
     );
