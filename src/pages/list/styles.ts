@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ListContainer = styled.div``;
-export const ListContent = styled.div``;
+export const ListContent = styled.main``;
 export const FilterContainer = styled.div`
     width: 100%;
     display: flex;
