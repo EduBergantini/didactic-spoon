@@ -41,9 +41,12 @@ const List: React.FC<IListProps> = ({ match }) => {
         }
     }, [type]);
 
+    const dataset = useMemo(() => {
+        return type === "entradas" ? gains : expenses;
+    }, [type])
+
     useEffect(() => {
-        const requestData = type === "entradas" ? gains : expenses;
-        const filteredData = requestData.filter(item => {
+        const filteredData = dataset.filter(item => {
             const dataDate = new Date(item.date);
             return (dataDate.getMonth()+1).toString() === selectedMonth 
                 && dataDate.getFullYear().toString() === selectedYear;
@@ -62,7 +65,7 @@ const List: React.FC<IListProps> = ({ match }) => {
 
         setData(listData);
 
-    }, [selectedMonth, selectedYear, type]);
+    }, [selectedMonth, selectedYear, dataset]);
 
     const months = [
         {value: 1, label: "Janeiro"},
