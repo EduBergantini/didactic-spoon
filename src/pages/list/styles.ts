@@ -14,6 +14,7 @@ export const FilterContainer = styled.div`
         color: ${props => props.theme.colors.white};
         margin: 0 10px 30px;
         transition: opacity .3s;
+        opacity: .4;
 
         &:hover {
             opacity: .7;
@@ -32,7 +33,9 @@ export const FilterContainer = styled.div`
         width: 55px;
         margin: 0 auto;
         border-bottom: 10px solid ${props => props.theme.colors.success};
-
+    }
+    .tag-activated {
+        opacity: 1;
     }
 `;
 

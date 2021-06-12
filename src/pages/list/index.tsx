@@ -33,6 +33,7 @@ const List: React.FC<IListProps> = ({ match }) => {
     const [data, setData] = useState<IListData[]>([]);
     const [selectedMonth, setSelectedMonth] = useState<string>((currentDate.getMonth()+1).toLocaleString());
     const [selectedYear, setSelectedYear] = useState<string>(currentDate.getFullYear().toLocaleString());
+    const [selectedFrequencies, setSelectedFrequencies] = useState<string[]>(['recorrente', 'eventual']);
     const {type} = match.params;
 
     const title = useMemo(() => {
@@ -45,28 +46,6 @@ const List: React.FC<IListProps> = ({ match }) => {
     const dataset = useMemo(() => {
         return type === "entradas" ? gains : expenses;
     }, [type])
-
-    useEffect(() => {
-        const filteredData = dataset.filter(item => {
-            const dataDate = new Date(item.date);
-            return (dataDate.getMonth()+1).toString() === selectedMonth 
-                && dataDate.getFullYear().toString() === selectedYear;
-        });
-
-        const listData = filteredData.map((item, index) => {
-            return {
-                id: index,
-                description: item.description,
-                amount: parseFloat(item.amount),
-                frequency: item.frequency,
-                date: new Date(item.date),
-                tagColor: item.frequency === "recorrente" ? "#4e41f0" : "#e44c4e"
-            }
-        })
-
-        setData(listData);
-
-    }, [selectedMonth, selectedYear, dataset]);
 
     const months = useMemo(() => {
         return listOfMonths.map((month, index) => {
@@ -98,6 +77,43 @@ const List: React.FC<IListProps> = ({ match }) => {
         });
     }, [dataset]);
 
+    useEffect(() => {
+        const filteredData = dataset.filter(item => {
+            const dataDate = new Date(item.date);
+            return (dataDate.getMonth()+1).toString() === selectedMonth 
+                && dataDate.getFullYear().toString() === selectedYear
+                && selectedFrequencies.includes(item.frequency);
+        });
+
+        const listData = filteredData.map((item, index) => {
+            return {
+                id: index,
+                description: item.description,
+                amount: parseFloat(item.amount),
+                frequency: item.frequency,
+                date: new Date(item.date),
+                tagColor: item.frequency === "recorrente" ? "#4e41f0" : "#e44c4e"
+            }
+        })
+
+        setData(listData);
+
+    }, [selectedMonth, selectedYear, selectedFrequencies, dataset]);
+
+
+    const handleFrequencyClick = (frequency: string) => {
+        const selectedFrequencyIndex = selectedFrequencies.findIndex(item => item === frequency);
+        if (selectedFrequencyIndex >= 0) {
+            const result = selectedFrequencies.filter(item => item !== frequency);
+            setSelectedFrequencies(result);
+        }else {
+            setSelectedFrequencies(prevState => {
+                return [...prevState, frequency];
+            });
+        }
+
+    }
+
     return (
         <ListContainer>
             <ContentHeader title={title.text} lineColor={title.color}>
@@ -105,8 +121,16 @@ const List: React.FC<IListProps> = ({ match }) => {
                 <SelectInput options={years}  onSelectInputChange={e => setSelectedYear(e.target.value)} defaultValue={selectedYear}/>
             </ContentHeader>
             <FilterContainer>
-                <button type="button" className="tag-filter tag-filter-recurrent">Recorrentes</button>
-                <button type="button" className="tag-filter tag-filter-eventual">Eventuais</button>
+                <button 
+                    type="button" 
+                    className={`tag-filter tag-filter-recurrent ${selectedFrequencies.includes('recorrente') && 'tag-activated'}`}
+                    onClick={() => handleFrequencyClick('recorrente')}
+                >Recorrentes</button>
+                <button 
+                    type="button" 
+                    className={`tag-filter tag-filter-eventual ${selectedFrequencies.includes('eventual') && 'tag-activated'}`}
+                    onClick={() => handleFrequencyClick('eventual')}
+                >Eventuais</button>
             </FilterContainer>
             <ListContent>
             {
