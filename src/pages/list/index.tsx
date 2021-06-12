@@ -8,6 +8,7 @@ import { ListContainer, FilterContainer, ListContent } from "./styles";
 import gains from "../../repositories/gains";
 import expenses from "../../repositories/expenses";
 import formatToCurrency from "../../utils/format-currency";
+import listOfMonths from "../../utils/months";
 
 interface IListProps {
     match: {
@@ -67,20 +68,14 @@ const List: React.FC<IListProps> = ({ match }) => {
 
     }, [selectedMonth, selectedYear, dataset]);
 
-    const months = [
-        {value: 1, label: "Janeiro"},
-        {value: 2, label: "Fevereiro"},
-        {value: 3, label: "Março"},
-        {value: 4, label: "Abril"},
-        {value: 5, label: "Maio"},
-        {value: 6, label: "Junho"},
-        {value: 7, label: "Julho"},
-        {value: 8, label: "Agosto"},
-        {value: 9, label: "Setembro"},
-        {value: 10, label: "Outubro"},
-        {value: 11, label: "Novembro"},
-        {value: 12, label: "Dezembro"},
-    ];
+    const months = useMemo(() => {
+        return listOfMonths.map((month, index) => {
+                   return {
+                       value: index+1,
+                       label: month
+                   }
+               });
+    }, [])
 
     const years = useMemo(() => {
         const yearsWithData: number[] = [];
