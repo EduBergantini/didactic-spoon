@@ -28,8 +28,10 @@ interface IListData {
 }
 
 const List: React.FC<IListProps> = ({ match }) => {
-
+    const currentDate = new Date();
     const [data, setData] = useState<IListData[]>([]);
+    const [selectedMonth, setSelectedMonth] = useState<string>((currentDate.getMonth()+1).toLocaleString());
+    const [selectedYear, setSelectedYear] = useState<string>(currentDate.getFullYear().toLocaleString());
     const {type} = match.params;
 
     const title = useMemo(() => {
@@ -41,7 +43,13 @@ const List: React.FC<IListProps> = ({ match }) => {
 
     useEffect(() => {
         const requestData = type === "entradas" ? gains : expenses;
-        const listData = requestData.map((item, index) => {
+        const filteredData = requestData.filter(item => {
+            const dataDate = new Date(item.date);
+            return (dataDate.getMonth()+1).toString() === selectedMonth 
+                && dataDate.getFullYear().toString() === selectedYear;
+        });
+
+        const listData = filteredData.map((item, index) => {
             return {
                 id: index,
                 description: item.description,
@@ -54,7 +62,7 @@ const List: React.FC<IListProps> = ({ match }) => {
 
         setData(listData);
 
-    }, [type]);
+    }, [selectedMonth, selectedYear, type]);
 
     const months = [
         {value: 1, label: "Janeiro"},
@@ -81,8 +89,8 @@ const List: React.FC<IListProps> = ({ match }) => {
     return (
         <ListContainer>
             <ContentHeader title={title.text} lineColor={title.color}>
-                <SelectInput options={months} onSelectInputChange={e => console.log(e.target.value)}/>
-                <SelectInput options={years}  onSelectInputChange={e => console.log(e.target.value)}/>
+                <SelectInput options={months} onSelectInputChange={e => setSelectedMonth(e.target.value)} defaultValue={selectedMonth}/>
+                <SelectInput options={years}  onSelectInputChange={e => setSelectedYear(e.target.value)} defaultValue={selectedYear}/>
             </ContentHeader>
             <FilterContainer>
                 <button type="button" className="tag-filter tag-filter-recurrent">Recorrentes</button>
