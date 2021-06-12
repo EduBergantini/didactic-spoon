@@ -6,7 +6,8 @@ import { DashboardContainer, DashboardContent } from "./styles";
 import gains from "../../repositories/gains";
 import expenses from "../../repositories/expenses";
 import listOfMonths from "../../utils/months";
-import WalletBox, { IconEnums } from "../../components/wallet-box";
+import WalletBox from "../../components/wallet-box";
+import { IconEnums } from "../../utils/images";
 
 
 const Dashboard: React.FC = () => {
@@ -75,6 +76,7 @@ const Dashboard: React.FC = () => {
                     icon={IconEnums.ARROW_DOWN}
                     color="#e44c4e"
                 />
+
             </DashboardContent>
         </DashboardContainer>
     );
