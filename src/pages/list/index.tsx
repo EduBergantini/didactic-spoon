@@ -36,16 +36,14 @@ const List: React.FC<IListProps> = ({ match }) => {
     const [selectedFrequencies, setSelectedFrequencies] = useState<string[]>(['recorrente', 'eventual']);
     const {type} = match.params;
 
-    const title = useMemo(() => {
+    const balanceTypeData = useMemo(() => {
+        const isBalanceEntryPage: boolean = type === "entradas";
         return {
-            text: type === "entradas" ? "Entradas": "Saídas",
-            color: type === "entradas" ? "#f7931b" : "#e44c4e"
+            title: isBalanceEntryPage ? "Entradas": "Saídas",
+            color: isBalanceEntryPage ? "#f7931b" : "#e44c4e",
+            dataset: isBalanceEntryPage ? gains : expenses
         }
     }, [type]);
-
-    const dataset = useMemo(() => {
-        return type === "entradas" ? gains : expenses;
-    }, [type])
 
     const months = useMemo(() => {
         return listOfMonths.map((month, index) => {
@@ -58,7 +56,7 @@ const List: React.FC<IListProps> = ({ match }) => {
 
     const years = useMemo(() => {
         const yearsWithData: number[] = [];
-        dataset.forEach(item => {
+        balanceTypeData.dataset.forEach(item => {
             var date = new Date(item.date);
             var currentItemYear = date.getFullYear();
 
@@ -75,10 +73,10 @@ const List: React.FC<IListProps> = ({ match }) => {
                 label: item.toString()
             }
         });
-    }, [dataset]);
+    }, [balanceTypeData]);
 
     useEffect(() => {
-        const filteredData = dataset.filter(item => {
+        const filteredData = balanceTypeData.dataset.filter(item => {
             const dataDate = new Date(item.date);
             return (dataDate.getMonth()+1).toString() === selectedMonth 
                 && dataDate.getFullYear().toString() === selectedYear
@@ -98,7 +96,7 @@ const List: React.FC<IListProps> = ({ match }) => {
 
         setData(listData);
 
-    }, [selectedMonth, selectedYear, selectedFrequencies, dataset]);
+    }, [selectedMonth, selectedYear, selectedFrequencies, balanceTypeData]);
 
 
     const handleFrequencyClick = (frequency: string) => {
@@ -116,7 +114,7 @@ const List: React.FC<IListProps> = ({ match }) => {
 
     return (
         <ListContainer>
-            <ContentHeader title={title.text} lineColor={title.color}>
+            <ContentHeader title={balanceTypeData.title} lineColor={balanceTypeData.color}>
                 <SelectInput options={months} onSelectInputChange={e => setSelectedMonth(e.target.value)} defaultValue={selectedMonth}/>
                 <SelectInput options={years}  onSelectInputChange={e => setSelectedYear(e.target.value)} defaultValue={selectedYear}/>
             </ContentHeader>
