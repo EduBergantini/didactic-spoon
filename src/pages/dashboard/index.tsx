@@ -1,11 +1,12 @@
 import React, { useMemo, useState } from "react"
 import ContentHeader from "../../components/content-header";
 import SelectInput from "../../components/select-input";
-import { DashboardContainer } from "./styles";
+import { DashboardContainer, DashboardContent } from "./styles";
 
 import gains from "../../repositories/gains";
 import expenses from "../../repositories/expenses";
 import listOfMonths from "../../utils/months";
+import WalletBox, { IconEnums } from "../../components/wallet-box";
 
 
 const Dashboard: React.FC = () => {
@@ -49,6 +50,32 @@ const Dashboard: React.FC = () => {
             <SelectInput options={months} onSelectInputChange={e => setSelectedMonth(e.target.value)} defaultValue={selectedMonth}/>
                 <SelectInput options={years}  onSelectInputChange={e => setSelectedYear(e.target.value)} defaultValue={selectedYear}/>
             </ContentHeader>
+
+            <DashboardContent>
+                <WalletBox 
+                    title="saldo"
+                    amount={103.25}
+                    label="atualizado com base nas entradas e saídas"
+                    icon={IconEnums.DOLLAR}
+                    color="#4e41f0"
+                />
+
+                <WalletBox 
+                    title="entradas"
+                    amount={23000.13}
+                    label="atualizado com base nas entradas e saídas"
+                    icon={IconEnums.ARROW_UP}
+                    color="#f7931b"
+                />
+
+                <WalletBox 
+                    title="saídas"
+                    amount={19234.76}
+                    label="atualizado com base nas entradas e saídas"
+                    icon={IconEnums.ARROW_DOWN}
+                    color="#e44c4e"
+                />
+            </DashboardContent>
         </DashboardContainer>
     );
 };
