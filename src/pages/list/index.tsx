@@ -82,12 +82,26 @@ const List: React.FC<IListProps> = ({ match }) => {
         {value: 12, label: "Dezembro"},
     ];
 
-    const years = [
-        {value: 2021, label: "2021"},
-        {value: 2020, label: "2020"},
-        {value: 2019, label: "2019"},
-        {value: 2018, label: "2018"},
-    ];
+    const years = useMemo(() => {
+        const yearsWithData: number[] = [];
+        dataset.forEach(item => {
+            var date = new Date(item.date);
+            var currentItemYear = date.getFullYear();
+
+            if(!yearsWithData.includes(currentItemYear)) {
+                yearsWithData.push(currentItemYear);
+            }
+        });
+
+        setSelectedYear(yearsWithData[yearsWithData.length-1].toString())
+
+        return yearsWithData.map(item => {
+            return {
+                value: item,
+                label: item.toString()
+            }
+        });
+    }, [dataset]);
 
     return (
         <ListContainer>
