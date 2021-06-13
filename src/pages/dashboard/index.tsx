@@ -8,6 +8,7 @@ import expenses from "../../repositories/expenses";
 import listOfMonths from "../../utils/months";
 import WalletBox from "../../components/wallet-box";
 import { IconEnums } from "../../utils/images";
+import WalletEvaluation from "../../components/wallet-evaluation";
 
 
 const Dashboard: React.FC = () => {
@@ -75,6 +76,13 @@ const Dashboard: React.FC = () => {
                     label="atualizado com base nas entradas e saídas"
                     icon={IconEnums.ARROW_DOWN}
                     color="#e44c4e"
+                />
+
+                <WalletEvaluation
+                    title="Muito Bem!"
+                    icon={IconEnums.HAPPY_EMOJI}
+                    description="Sua carteira está positiva!"
+                    footerText="Continue assim. Considere investir o seu saldo"
                 />
 
             </DashboardContent>
