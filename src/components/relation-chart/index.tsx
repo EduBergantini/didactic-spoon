@@ -22,7 +22,7 @@ const RelationChart: React.FC<IRelationChartProps> = ({ data }) => (
                         <SubTitle 
                             key={index}
                             color={item.color}>
-                            <div>{item.percentage.toFixed(1)}</div>
+                            <div>{item.percentage.toFixed(1)}%</div>
                             <span>{item.name}</span>
                         </SubTitle>
                     ))
