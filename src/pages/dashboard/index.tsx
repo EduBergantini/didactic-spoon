@@ -10,6 +10,7 @@ import WalletBox from "../../components/wallet-box";
 import { IconEnums } from "../../utils/images";
 import WalletEvaluation from "../../components/wallet-evaluation";
 import RelationChart from "../../components/relation-chart";
+import HistoryChart from "../../components/history-chart";
 
 
 const Dashboard: React.FC = () => {
@@ -112,6 +113,37 @@ const Dashboard: React.FC = () => {
 
     }, [totalExpenses, totalProfit])
 
+    const profitLossHistory = useMemo(() => {
+        return listOfMonths.map((_, index) => {
+            let entryAmount = 0;
+            gains.forEach(item => {
+                const date = new Date(item.date);
+
+                if(date.getMonth() === index && date.getFullYear().toString() === selectedYear) {
+                    entryAmount += Number(item.amount);
+                }
+            });
+
+            let lossAmount = 0;
+            expenses.forEach(item => {
+                const date = new Date(item.date);
+
+                if(date.getMonth() === index && date.getFullYear().toString() === selectedYear) {
+                    lossAmount += Number(item.amount);
+                }
+            });
+
+            return {
+                monthIndex: index,
+                month: listOfMonths[index].substr(0, 3),
+                profit: entryAmount,
+                loss: lossAmount
+            }
+        }).filter((item) => {
+            const currentDate = new Date();
+            return currentDate.getMonth() >= item.monthIndex;
+        });
+    }, [selectedYear])
     return (
         <DashboardContainer>
             <ContentHeader title="Dashboard" lineColor="#4e41f0">
@@ -152,6 +184,12 @@ const Dashboard: React.FC = () => {
                 />
 
                 <RelationChart data={relationProfitLoss} />
+
+                <HistoryChart 
+                    data={profitLossHistory}
+                    profitLineColor="#f7931b"
+                    lossLineColor="#e44c4e"
+                />
 
             </DashboardContent>
         </DashboardContainer>
