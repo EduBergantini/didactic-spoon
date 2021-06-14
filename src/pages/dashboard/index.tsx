@@ -9,6 +9,7 @@ import listOfMonths from "../../utils/months";
 import WalletBox from "../../components/wallet-box";
 import { IconEnums } from "../../utils/images";
 import WalletEvaluation from "../../components/wallet-evaluation";
+import RelationChart from "../../components/relation-chart";
 
 
 const Dashboard: React.FC = () => {
@@ -92,6 +93,25 @@ const Dashboard: React.FC = () => {
         }
     }, [finalBalance]);
 
+    const relationProfitLoss = useMemo(() => {
+        const total = totalProfit+totalExpenses;
+        const profitPercentage = (totalProfit/total)*100;
+        const lossPercentage = (totalExpenses/total)*100;
+        return [{
+            name: "Entradas",
+            value: totalProfit,
+            percentage: profitPercentage,
+            color: "#f7931b",
+        },
+        {
+            name: "Saídas",
+            value: totalExpenses,
+            percentage: lossPercentage,
+            color: "#e44c4e",
+        }];
+
+    }, [totalExpenses, totalProfit])
+
     return (
         <DashboardContainer>
             <ContentHeader title="Dashboard" lineColor="#4e41f0">
@@ -130,6 +150,8 @@ const Dashboard: React.FC = () => {
                     description={message.description}
                     footerText={message.footerText}
                 />
+
+                <RelationChart data={relationProfitLoss} />
 
             </DashboardContent>
         </DashboardContainer>
