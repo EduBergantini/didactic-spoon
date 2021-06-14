@@ -46,6 +46,52 @@ const Dashboard: React.FC = () => {
         });
     }, []);
 
+    const totalExpenses = useMemo(() => {
+        let total: number = 0;
+        expenses.forEach(item => {
+            const date = new Date(item.date);
+            if(date.getFullYear() === parseInt(selectedYear)
+            && date.getMonth() +1 === parseInt(selectedMonth))
+                total += Number(item.amount);
+
+        });
+        return total;
+    }, [selectedYear, selectedMonth]);
+
+    const totalProfit = useMemo(() => {
+        let total: number = 0;
+        gains.forEach(item => {
+            const date = new Date(item.date);
+            if(date.getFullYear() === parseInt(selectedYear)
+            && date.getMonth() +1 === parseInt(selectedMonth))
+                total += Number(item.amount);
+
+        });
+        return total;
+    }, [selectedYear, selectedMonth]);
+
+    const finalBalance = useMemo(() => {
+        return totalProfit-totalExpenses;
+    }, [totalProfit, totalExpenses]);
+
+    const message = useMemo(() => {
+        if(finalBalance > 0) {
+            return {
+                title: "Muito Bem!",
+                icon: IconEnums.HAPPY_EMOJI,
+                description: "Sua carteira está positiva!",
+                footerText: "Continue assim. Considere investir o seu saldo",
+            }
+        } else {
+            return {
+                title: "Que triste!",
+                icon: IconEnums.SAD_EMOJI,
+                description: "Nesse mes você gastou mais do que deveria",
+                footerText: "Verifique seus gastos e tente cortar algumas coisas desnecesárias",
+            }
+        }
+    }, [finalBalance]);
+
     return (
         <DashboardContainer>
             <ContentHeader title="Dashboard" lineColor="#4e41f0">
@@ -56,7 +102,7 @@ const Dashboard: React.FC = () => {
             <DashboardContent>
                 <WalletBox 
                     title="saldo"
-                    amount={103.25}
+                    amount={finalBalance}
                     label="atualizado com base nas entradas e saídas"
                     icon={IconEnums.DOLLAR}
                     color="#4e41f0"
@@ -64,7 +110,7 @@ const Dashboard: React.FC = () => {
 
                 <WalletBox 
                     title="entradas"
-                    amount={23000.13}
+                    amount={totalProfit}
                     label="atualizado com base nas entradas e saídas"
                     icon={IconEnums.ARROW_UP}
                     color="#f7931b"
@@ -72,17 +118,17 @@ const Dashboard: React.FC = () => {
 
                 <WalletBox 
                     title="saídas"
-                    amount={19234.76}
+                    amount={totalExpenses}
                     label="atualizado com base nas entradas e saídas"
                     icon={IconEnums.ARROW_DOWN}
                     color="#e44c4e"
                 />
 
                 <WalletEvaluation
-                    title="Muito Bem!"
-                    icon={IconEnums.HAPPY_EMOJI}
-                    description="Sua carteira está positiva!"
-                    footerText="Continue assim. Considere investir o seu saldo"
+                    title={message.title}
+                    icon={message.icon}
+                    description={message.description}
+                    footerText={message.footerText}
                 />
 
             </DashboardContent>
