@@ -21,4 +21,40 @@ export const WalletEvaluationContainer = styled.div`
     > header p {
         font-size: 18px;
     }
+
+    @media(max-width: 770px) {
+        width: 100%;
+        height: 170px;
+        > header {
+            > h1 {
+                font-size: 24px;
+
+                > img {
+                    height: 20px;
+                    width: 20px;
+                }
+            }
+            > p {
+                font-size: 14px;
+            }
+        }
+        > footer {
+            > span {
+                font-size: 14px;
+            }
+        }
+    }
+
+    @media(max-width: 420px) {
+        width: 100%;
+        height: 190px;
+        height: auto;
+
+        > header p {
+            margin-bottom: 15px;
+        }
+        > footer span {
+            font-size: 12px;
+        }
+    }
 `;
