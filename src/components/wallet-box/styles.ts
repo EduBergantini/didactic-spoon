@@ -32,4 +32,40 @@ export const WalletBoxContainer = styled.div<IContainerProps>`
         position: absolute;
         bottom: 10px;
     }
+
+    @media(max-width: 770px) {
+        > span {
+            font-size: 14px;
+        }
+
+        > h1 {
+            word-wrap: break-word;
+            font-size: 20px;
+            > strong {
+                display: inline-block;
+                width: 100%;
+                font-size: 14px;
+            }
+        }
+    }
+
+    @media(max-width: 420px) {
+        width: 100%;
+        > h1 {
+            display: flex;
+            align-items: center;
+
+            > strong {
+                width: auto;
+                font-size: 22px;
+            }
+            > strong:after {
+                display: inline-block;
+                content: ' ';
+                width: 3px;
+
+            }
+        }
+
+    }
 `;
