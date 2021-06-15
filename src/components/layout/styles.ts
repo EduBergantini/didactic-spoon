@@ -7,4 +7,9 @@ export const LayoutGrid = styled.div`
 
     grid-template-areas: 'AS MH' 'AS CT';
     height: 100vh;
+
+    @media(max-width: 600px) {
+        grid-template-columns: 100%;
+        grid-template-areas: 'MH' 'CT';
+    }
 `;
