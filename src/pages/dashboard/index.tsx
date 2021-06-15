@@ -11,6 +11,7 @@ import { IconEnums } from "../../utils/images";
 import WalletEvaluation from "../../components/wallet-evaluation";
 import RelationChart from "../../components/relation-chart";
 import HistoryChart from "../../components/history-chart";
+import MonthlyRecurrentEventualChart from "../../components/monthly-recurrent-eventual-chart";
 
 
 const Dashboard: React.FC = () => {
@@ -144,6 +145,79 @@ const Dashboard: React.FC = () => {
             return currentDate.getMonth() >= item.monthIndex;
         });
     }, [selectedYear])
+
+    const relationLossEventualRecurrent = useMemo(() => {
+        let recurrentAmount = 0;
+        let eventualAmount = 0;
+
+        expenses.filter((loss) => {
+            const lossDate = new Date(loss.date);
+            return (lossDate.getMonth()+1).toString() === selectedMonth
+                && lossDate.getFullYear().toString() === selectedYear;
+        })
+        .forEach((item) => {
+            const amount = Number(item.amount);
+            if(item.frequency === "recorrente") {
+                return recurrentAmount += amount;
+            } else {
+                eventualAmount += amount;
+            }
+        });
+
+        const totalAmount = recurrentAmount + eventualAmount;
+
+        return [
+            {
+                name: "Recorrentes",
+                amount: recurrentAmount,
+                percentage: (recurrentAmount/totalAmount)*100,
+                color: "#4e41f0"
+            },
+            {
+                name: "Eventuais",
+                amount: eventualAmount,
+                percentage: (eventualAmount/totalAmount)*100,
+                color: "#e44c4e"
+            }
+        ];
+    }, [selectedMonth, selectedYear]);
+
+    const relationProfitEventualRecurrent = useMemo(() => {
+        let recurrentAmount = 0;
+        let eventualAmount = 0;
+
+        gains.filter((loss) => {
+            const lossDate = new Date(loss.date);
+            return (lossDate.getMonth()+1).toString() === selectedMonth
+                && lossDate.getFullYear().toString() === selectedYear;
+        })
+        .forEach((item) => {
+            const amount = Number(item.amount);
+            if(item.frequency === "recorrente") {
+                return recurrentAmount += amount;
+            } else {
+                eventualAmount += amount;
+            }
+        });
+
+        const totalAmount = recurrentAmount + eventualAmount;
+
+        return [
+            {
+                name: "Recorrentes",
+                amount: recurrentAmount,
+                percentage: (recurrentAmount/totalAmount)*100,
+                color: "#4e41f0"
+            },
+            {
+                name: "Eventuais",
+                amount: eventualAmount,
+                percentage: (eventualAmount/totalAmount)*100,
+                color: "#e44c4e"
+            }
+        ];
+    }, [selectedMonth, selectedYear]);
+
     return (
         <DashboardContainer>
             <ContentHeader title="Dashboard" lineColor="#4e41f0">
@@ -190,6 +264,15 @@ const Dashboard: React.FC = () => {
                     profitLineColor="#f7931b"
                     lossLineColor="#e44c4e"
                 />
+
+                <MonthlyRecurrentEventualChart
+                    title="Saídas"
+                    data={relationLossEventualRecurrent}/>
+
+                <MonthlyRecurrentEventualChart
+                    title="Entradas"
+                    data={relationProfitEventualRecurrent}/>
+
 
             </DashboardContent>
         </DashboardContainer>
