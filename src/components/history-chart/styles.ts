@@ -23,12 +23,19 @@ export const HistoryChartHeader = styled.header`
         margin-bottom: 20px;
         padding-left: 16px;
     }
+    @media(max-width: 1200px) {
+        flex-direction: column;
+    }
 `;
 export const HistorySubtitleContainer = styled.ul`
     list-style: none;
     display: flex;
     padding-right: 16px;
-
+    
+    @media(max-width: 1200px) {
+        padding-right: 0;
+        padding-left: 6px;
+    }
 `;
 
 export const HistorySubtitle = styled.li<ISubtitleProps>`
@@ -48,6 +55,13 @@ export const HistorySubtitle = styled.li<ISubtitleProps>`
     }
     > span {
         margin-left: 7px;
+    }
+
+    @media(max-width: 1200px) {
+        > div {
+            width: 35px;
+            height: 35px;
+        }
     }
 `;
 export const HistoryChartArea = styled.div`
