@@ -1,16 +1,35 @@
 import React from "react";
 import logoSvg from "../../assets/logo.svg";
-import { MdDashboard, MdArrowUpward, MdArrowDownward, MdExitToApp } from "react-icons/md";
-import { AsideContainer, AsideHeader, LogoImage, Title, MenuContainer, MenuItemLink } from "./styles";
+import { MdDashboard, MdArrowUpward, MdArrowDownward, MdExitToApp, MdClose, MdMenu } from "react-icons/md";
+import { AsideContainer, AsideHeader, LogoImage, Title, MenuContainer, MenuItemLink, ToggleMenu, MenuToggleContainer } from "./styles";
 import { useAuthentication } from "../../contexts/auth-context";
+import { useState } from "react";
+import { useApplicationTheme } from "../../contexts/theme-context";
+import Toggle from "../toggle";
 
 const Aside: React.FC = () => {
-
     const { signOut } = useAuthentication();
+    const { toggleTheme, theme } = useApplicationTheme();
+
+    const [isDarkThemeEnabled, setIsDarkThemeEnabled] = useState<boolean>(() => theme.title === "dark");
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    
+    const handleToggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    }
+
+    const handleChangeThemeEvent = () => {
+        setIsDarkThemeEnabled(!isDarkThemeEnabled);
+        toggleTheme();
+    }
 
     return (
-        <AsideContainer>
+        <AsideContainer isMenuOpen={isMenuOpen}>
             <AsideHeader>
+                <ToggleMenu onClick={handleToggleMenu}>
+                    {isMenuOpen? <MdClose/> : <MdMenu />}
+                </ToggleMenu>
+
                 <LogoImage src={logoSvg} alt="Logo Minha Carteira" />
                 <Title>Minha Carteira</Title>
             </AsideHeader>
@@ -36,6 +55,15 @@ const Aside: React.FC = () => {
                     Sair
                 </MenuItemLink>
             </MenuContainer>
+
+            <MenuToggleContainer isMenuOpen={isMenuOpen}>
+                <Toggle 
+                    leftLabel="Light"
+                    rightLabel="Dark"
+                    checked={isDarkThemeEnabled}
+                    onChange={handleChangeThemeEvent}
+                    />
+            </MenuToggleContainer>
         </AsideContainer>
     );
 };
