@@ -43,10 +43,10 @@ const ThemeProvider: React.FC = ({ children }) => {
     const toggleTheme = () => {
         if(theme.title === "dark") {
             setTheme(light);
-            localStorage.setItem("BackOffice:Theme:Active", JSON.stringify(light));
+            localStorage.setItem(storageKey, JSON.stringify(light));
         } else {
             setTheme(dark);
-            localStorage.setItem("BackOffice:Theme:Active", JSON.stringify(dark));
+            localStorage.setItem(storageKey, JSON.stringify(dark));
         }
     };
 
