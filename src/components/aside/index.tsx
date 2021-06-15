@@ -12,7 +12,7 @@ const Aside: React.FC = () => {
             </AsideHeader>
 
             <MenuContainer>
-                <MenuItemLink href="/dashboard" title="Link para o dashboard">
+                <MenuItemLink href="/" title="Link para o dashboard">
                     <MdDashboard />
                     Dashboard
                 </MenuItemLink>
