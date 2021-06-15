@@ -4,7 +4,7 @@ import SignIn from "../pages/sign-in";
 
 const AuthRoute: React.FC = () => (
     <Switch>
-        <Route component={SignIn}/>
+        <Route path="/" component={SignIn}/>
     </Switch>
 )
 
