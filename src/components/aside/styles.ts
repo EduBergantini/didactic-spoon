@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const AsideContainer = styled.div`
@@ -25,7 +26,7 @@ export const MenuContainer = styled.nav`
     flex-direction: column;
     margin-top: 20px;    
 `;
-export const MenuItemLink = styled.a`
+export const MenuItemLink = styled(Link)`
     color: ${props => props.theme.colors.info};
     text-decoration: none;
     transition: opacity .3s;
