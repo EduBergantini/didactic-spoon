@@ -1,8 +1,25 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 interface IContainerProps {
     color: string;
 }
+
+const animationFrame = keyframes`
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: .4;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+`;
+
 export const WalletBoxContainer = styled.div<IContainerProps>`
     background-color: ${props => props.color};
     color: ${props => props.theme.colors.white};
@@ -13,6 +30,7 @@ export const WalletBoxContainer = styled.div<IContainerProps>`
     padding: 10px 20px;
     position: relative;
     overflow: hidden;
+    animation: ${animationFrame} .5s;
 
     > img {
         height: 110%;

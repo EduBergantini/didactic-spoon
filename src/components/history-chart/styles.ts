@@ -1,8 +1,25 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 interface ISubtitleProps {
     color: string;
 }
+
+const animationFrame = keyframes`
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: .4;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+`;
+
 export const HistoryChartContainer = styled.div`
     width: 100%;
     height: 360px;
@@ -13,6 +30,7 @@ export const HistoryChartContainer = styled.div`
     margin: 10px 0;
     padding: 30px 20px;
     border-radius: 7px;
+    animation: ${animationFrame} .5s;
 
 `;
 export const HistoryChartHeader = styled.header`

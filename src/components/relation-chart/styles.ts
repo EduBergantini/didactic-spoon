@@ -1,8 +1,24 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 interface ILegendProps {
     color: string;
 }
+
+const animationFrame = keyframes`
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: .4;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+`;
 
 export const RelationChartContainer = styled.div`
     width: 48%;
@@ -12,7 +28,8 @@ export const RelationChartContainer = styled.div`
     color: ${props => props.theme.colors.white};
     border-radius: 7px;
     display: flex;
-
+    animation: ${animationFrame} .5s;
+    
     @media(max-width: 770px) {
         display: flex;
         width: 100%;

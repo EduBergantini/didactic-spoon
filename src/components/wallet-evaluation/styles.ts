@@ -1,4 +1,20 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const animationFrame = keyframes`
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: .4;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+`;
 
 export const WalletEvaluationContainer = styled.div`
     width: 48%;
@@ -8,10 +24,10 @@ export const WalletEvaluationContainer = styled.div`
     border-radius: 7px;
     margin: 10px 0;
     padding: 30px 20px;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    animation: ${animationFrame} .5s;
 
     > header img {
         width: 35px;
