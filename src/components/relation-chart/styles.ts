@@ -12,12 +12,31 @@ export const RelationChartContainer = styled.div`
     color: ${props => props.theme.colors.white};
     border-radius: 7px;
     display: flex;
+
+    @media(max-width: 770px) {
+        display: flex;
+        width: 100%;
+    }
 `;
 export const InformationContainer = styled.aside`
     padding: 30px 20px;
+    
+    @media(max-width: 1345px) {
+        padding: 0 15px 5px;
+        margin-bottom: 7px;
+    }
+    
+    @media(max-width: 420px) {
+        padding: 15px;
+        margin-bottom: 7px;
+    }
 `;
 export const Title = styled.h2`
     margin-bottom: 20px;
+
+    @media(max-width: 1345px) {
+        margin: 15px inherit 7px inherit;
+    }
 `;
 export const SubtitleContainer = styled.ul`
     list-style: none;
@@ -26,6 +45,10 @@ export const SubtitleContainer = styled.ul`
     overflow-y: scroll;
     padding-right: 15px;
 
+    @media(max-width: 1345px) {
+        display: flex;
+        flex-direction: column;
+    }
 `;
 export const SubTitle = styled.li<ILegendProps>`
     display: flex;
@@ -45,9 +68,24 @@ export const SubTitle = styled.li<ILegendProps>`
     > span {
         margin-left: 7px;
     }
+
+    @media(max-width: 1345px) {
+        font-size: 14px;
+        margin: 3px 0;
+        > div {
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+        }
+        
+    }
 `;
 export const GraphicContainer = styled.main`
     display: flex;
     flex: 1;
     justify-content: center;
+
+    @media(max-width: 1345px) {
+        height: 100%;
+    }
 `;
