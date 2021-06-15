@@ -2,8 +2,12 @@ import React from "react";
 import logoSvg from "../../assets/logo.svg";
 import { MdDashboard, MdArrowUpward, MdArrowDownward, MdExitToApp } from "react-icons/md";
 import { AsideContainer, AsideHeader, LogoImage, Title, MenuContainer, MenuItemLink } from "./styles";
+import { useAuthentication } from "../../contexts/auth-context";
 
 const Aside: React.FC = () => {
+
+    const { signOut } = useAuthentication();
+
     return (
         <AsideContainer>
             <AsideHeader>
@@ -27,7 +31,7 @@ const Aside: React.FC = () => {
                     Saídas
                 </MenuItemLink>
 
-                <MenuItemLink href="/sair" title="Link para sair da aplicação">
+                <MenuItemLink onClick={signOut} title="Link para sair da aplicação">
                     <MdExitToApp />
                     Sair
                 </MenuItemLink>
