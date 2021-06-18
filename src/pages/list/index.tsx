@@ -9,6 +9,7 @@ import gains from "../../repositories/gains";
 import expenses from "../../repositories/expenses";
 import formatToCurrency from "../../utils/format-currency";
 import listOfMonths from "../../utils/months";
+import { useApplicationTheme } from "../../contexts/theme-context";
 
 interface IListProps {
     match: {
@@ -29,6 +30,7 @@ interface IListData {
 }
 
 const List: React.FC<IListProps> = ({ match }) => {
+    const currentTheme = useApplicationTheme();
     const currentDate = new Date();
     const [data, setData] = useState<IListData[]>([]);
     const [selectedMonth, setSelectedMonth] = useState<string>((currentDate.getMonth()+1).toLocaleString());
@@ -40,7 +42,9 @@ const List: React.FC<IListProps> = ({ match }) => {
         const isBalanceEntryPage: boolean = type === "entradas";
         return {
             title: isBalanceEntryPage ? "Entradas": "Saídas",
-            color: isBalanceEntryPage ? "#f7931b" : "#e44c4e",
+            color: isBalanceEntryPage 
+            ? currentTheme.theme.colors.info 
+            : currentTheme.theme.colors.warning,
             dataset: isBalanceEntryPage ? gains : expenses
         }
     }, [type]);
@@ -90,7 +94,9 @@ const List: React.FC<IListProps> = ({ match }) => {
                 amount: parseFloat(item.amount),
                 frequency: item.frequency,
                 date: new Date(item.date),
-                tagColor: item.frequency === "recorrente" ? "#4e41f0" : "#e44c4e"
+                tagColor: item.frequency === "recorrente" 
+                ? currentTheme.theme.colors.success
+                : currentTheme.theme.colors.warning
             }
         })
 
