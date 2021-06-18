@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     grid-area: MH;
     background-color: ${props => props.theme.colors.secondary};
-    color: ${props => props.theme.colors.fontPrimary};
+    color: ${props => props.theme.colors.primaryFontColor};
     display: flex;
     justify-content: space-between;
     padding: 0 10px;

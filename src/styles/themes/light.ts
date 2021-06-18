@@ -6,7 +6,7 @@ const lightTheme = {
         secondary: "#fff",
         tertiary: "#f5f5f5",
 
-        fontPrimary: "#333",
+        primaryFontColor: "#333",
         detailsColor: "#bfbfbf",
 
         success: "#03bb85",

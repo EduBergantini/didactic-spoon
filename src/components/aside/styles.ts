@@ -10,7 +10,7 @@ export const AsideContainer = styled.div<IMobileAsideContainerProps>`
     background-color: ${props => props.theme.colors.secondary};
     padding-left: 20px;
     border-right: 1px solid ${props => props.theme.colors.detailsColor};
-    color: ${props => props.theme.colors.fontPrimary};
+    color: ${props => props.theme.colors.primaryFontColor};
 
     @media(max-width: 600px) {
         padding-left: 7px;
@@ -74,7 +74,7 @@ export const ToggleMenu = styled.button`
     border-radius: 5px;
     font-size: 22px;
     background-color: ${props => props.theme.colors.warning};
-    color: ${props => props.theme.colors.fontPrimary};
+    color: ${props => props.theme.colors.primaryFontColor};
     transition: opacity .3s;
 
     &:hover {

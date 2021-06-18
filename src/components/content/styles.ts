@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     grid-area: CT;
     background-color: ${props => props.theme.colors.primary};
-    color: ${props => props.theme.colors.fontPrimary};
+    color: ${props => props.theme.colors.primaryFontColor};
     padding: 25px;
     height: calc(100vh -70px);
     overflow-y: scroll;

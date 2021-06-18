@@ -25,7 +25,7 @@ export const RelationChartContainer = styled.div`
     height: 260px;
     margin: 10px 0;
     background-color: ${props => props.theme.colors.tertiary};
-    color: ${props => props.theme.colors.fontPrimary};
+    color: ${props => props.theme.colors.primaryFontColor};
     border-radius: 7px;
     display: flex;
     animation: ${animationFrame} .5s;

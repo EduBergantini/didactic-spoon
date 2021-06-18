@@ -10,7 +10,7 @@ export const MonthlyRecurrentEventualChartContainer = styled.div`
     min-height: 260px;
     margin: 10px 0;
     background-color: ${props => props.theme.colors.tertiary};
-    color: ${props => props.theme.colors.fontPrimary};
+    color: ${props => props.theme.colors.primaryFontColor};
     border-radius: 7px;
     display: flex;
 

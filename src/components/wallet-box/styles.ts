@@ -22,7 +22,7 @@ const animationFrame = keyframes`
 
 export const WalletBoxContainer = styled.div<IContainerProps>`
     background-color: ${props => props.color};
-    color: ${props => props.theme.colors.fontPrimary};
+    color: ${props => props.theme.colors.primaryFontColor};
     width: 32%;
     height: 150px;
     margin: 10px 0;
