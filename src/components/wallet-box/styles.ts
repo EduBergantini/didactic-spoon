@@ -51,7 +51,7 @@ export const WalletBoxContainer = styled.div<IContainerProps>`
         bottom: 10px;
     }
 
-    @media(max-width: 770px) {
+    @media(max-width: 800px) {
         > span {
             font-size: 14px;
         }
