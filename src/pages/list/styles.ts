@@ -11,7 +11,7 @@ export const FilterContainer = styled.div`
         font-size: 18px;
         font-weight: 500;
         background: none;
-        color: ${props => props.theme.colors.white};
+        color: ${props => props.theme.colors.fontPrimary};
         margin: 0 10px 30px;
         transition: opacity .3s;
         opacity: .4;

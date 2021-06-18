@@ -14,7 +14,7 @@ export const SignInLogo =  styled.div`
     align-items: center;
     margin-bottom: 30px;
     > h2 {
-        color: ${props => props.theme.colors.white};
+        color: ${props => props.theme.colors.fontPrimary};
         margin-left: 7px;
     }
 
@@ -37,7 +37,7 @@ export const SignInForm =  styled.form`
         padding: 10px;
         border-radius: 5px;
         font-weight: bold;
-        color: ${props => props.theme.colors.white};
+        color: ${props => props.theme.colors.fontPrimary};
         background-color: ${props => props.theme.colors.warning};
         transition: opacity .3s;
         &:hover {
@@ -47,7 +47,7 @@ export const SignInForm =  styled.form`
     }
 `;
 export const SignInTitle =  styled.div`
-    color: ${props => props.theme.colors.white};
+    color: ${props => props.theme.colors.fontPrimary};
     &:after {
         content: '';
         display: block;

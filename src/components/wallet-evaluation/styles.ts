@@ -20,7 +20,7 @@ export const WalletEvaluationContainer = styled.div`
     width: 48%;
     height: 260px;
     background-color: ${props => props.theme.colors.tertiary};
-    color: ${props => props.theme.colors.white};
+    color: ${props => props.theme.colors.fontPrimary};
     border-radius: 7px;
     margin: 10px 0;
     padding: 30px 20px;

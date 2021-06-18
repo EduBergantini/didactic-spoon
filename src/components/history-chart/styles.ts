@@ -26,7 +26,7 @@ export const HistoryChartContainer = styled.div`
     display: flex;
     flex-direction: column;
     background-color: ${props => props.theme.colors.tertiary};
-    color: ${props => props.theme.colors.white};
+    color: ${props => props.theme.colors.fontPrimary};
     margin: 10px 0;
     padding: 30px 20px;
     border-radius: 7px;

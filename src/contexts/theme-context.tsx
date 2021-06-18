@@ -11,7 +11,7 @@ interface ITheme {
         secondary: string;
         tertiary: string;
 
-        white: string;
+        fontPrimary: string;
         black: string;
         gray: string;
 
