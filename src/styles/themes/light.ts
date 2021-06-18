@@ -2,16 +2,16 @@ const lightTheme = {
     title: "light",
 
     colors: {
-        primary: "#dcdcdc",
-        secondary: "#fff",
-        tertiary: "#f5f5f5",
+        primary: "#c5d5eaff",
+        secondary: "#759eb8ff",
+        tertiary: "#7392b7ff",
 
-        primaryFontColor: "#333",
-        detailsColor: "#bfbfbf",
+        primaryFontColor: "#333333f0",
+        detailsColor: "#FFF07C",
 
-        success: "#03bb85",
-        info: "#3b5998",
-        warning: "#ff6961"
+        success: "#00c12b",
+        info: "#ff7c00",
+        warning: "#ff1800"
     }
 }
 
