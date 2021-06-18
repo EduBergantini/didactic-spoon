@@ -2,14 +2,14 @@ const darkTheme = {
     title: "dark",
 
     colors: {
-        primary: "#1b1f38",
-        secondary: "#252a48",
-        tertiary: "#313862",
+        primary: "#7F9183",
+        secondary: "#586F6B",
+        tertiary: "#B8B8AA",
 
-        primaryFontColor: "#fff",
-        detailsColor: "#bfbfbf",
+        primaryFontColor: "#333",
+        detailsColor: "#DDD5D0",
 
-        success: "#4e41f0",
+        success: "#00c12b",
         info: "#f7931b",
         warning: "#e44c4e"
     }
