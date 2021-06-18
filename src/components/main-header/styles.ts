@@ -7,7 +7,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 0 10px;
-    border-bottom: 1px solid ${props => props.theme.colors.gray};
+    border-bottom: 1px solid ${props => props.theme.colors.detailsColor};
 `;
 
 export const Profile  = styled.div`

@@ -9,7 +9,7 @@ export const AsideContainer = styled.div<IMobileAsideContainerProps>`
     grid-area: AS;
     background-color: ${props => props.theme.colors.secondary};
     padding-left: 20px;
-    border-right: 1px solid ${props => props.theme.colors.gray};
+    border-right: 1px solid ${props => props.theme.colors.detailsColor};
     color: ${props => props.theme.colors.fontPrimary};
 
     @media(max-width: 600px) {
@@ -22,7 +22,7 @@ export const AsideContainer = styled.div<IMobileAsideContainerProps>`
         
         ${props => !props.isMenuOpen && css`
             border-right: none;
-            border-bottom: 1px solid ${props => props.theme.colors.gray};
+            border-bottom: 1px solid ${props => props.theme.colors.detailsColor};
         `}
     }
 `;

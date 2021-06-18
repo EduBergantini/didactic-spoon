@@ -10,8 +10,7 @@ declare module "styled-components" {
             tertiary: string;
     
             fontPrimary: string;
-            black: string;
-            gray: string;
+            detailsColor: string;
     
             success: string;
             info: string;

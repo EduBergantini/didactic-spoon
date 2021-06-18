@@ -7,8 +7,7 @@ const lightTheme = {
         tertiary: "#f5f5f5",
 
         fontPrimary: "#333",
-        black: "#fff",
-        gray: "#bfbfbf",
+        detailsColor: "#bfbfbf",
 
         success: "#03bb85",
         info: "#3b5998",

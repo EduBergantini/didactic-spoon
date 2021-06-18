@@ -7,8 +7,7 @@ const darkTheme = {
         tertiary: "#313862",
 
         fontPrimary: "#fff",
-        black: "#333",
-        gray: "#bfbfbf",
+        detailsColor: "#bfbfbf",
 
         success: "#4e41f0",
         info: "#f7931b",
