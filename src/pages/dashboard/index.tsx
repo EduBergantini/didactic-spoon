@@ -12,9 +12,11 @@ import WalletEvaluation from "../../components/wallet-evaluation";
 import RelationChart from "../../components/relation-chart";
 import HistoryChart from "../../components/history-chart";
 import MonthlyRecurrentEventualChart from "../../components/monthly-recurrent-eventual-chart";
+import { useApplicationTheme } from "../../contexts/theme-context";
 
 
 const Dashboard: React.FC = () => {
+    const currentTheme = useApplicationTheme();
     const currentDate = new Date();
     const [selectedMonth, setSelectedMonth] = useState<string>((currentDate.getMonth()+1).toLocaleString());
     const [selectedYear, setSelectedYear] = useState<string>(currentDate.getFullYear().toLocaleString());
@@ -103,13 +105,13 @@ const Dashboard: React.FC = () => {
             name: "Entradas",
             value: totalProfit,
             percentage: profitPercentage,
-            color: "#f7931b",
+            color: currentTheme.theme.colors.info,
         },
         {
             name: "Saídas",
             value: totalExpenses,
             percentage: lossPercentage,
-            color: "#e44c4e",
+            color: currentTheme.theme.colors.warning,
         }];
 
     }, [totalExpenses, totalProfit])
@@ -171,13 +173,13 @@ const Dashboard: React.FC = () => {
                 name: "Recorrentes",
                 amount: recurrentAmount,
                 percentage: (recurrentAmount/totalAmount)*100,
-                color: "#4e41f0"
+                color: currentTheme.theme.colors.success
             },
             {
                 name: "Eventuais",
                 amount: eventualAmount,
                 percentage: (eventualAmount/totalAmount)*100,
-                color: "#e44c4e"
+                color: currentTheme.theme.colors.warning
             }
         ];
     }, [selectedMonth, selectedYear]);
@@ -207,20 +209,20 @@ const Dashboard: React.FC = () => {
                 name: "Recorrentes",
                 amount: recurrentAmount,
                 percentage: (recurrentAmount/totalAmount)*100,
-                color: "#4e41f0"
+                color: currentTheme.theme.colors.success
             },
             {
                 name: "Eventuais",
                 amount: eventualAmount,
                 percentage: (eventualAmount/totalAmount)*100,
-                color: "#e44c4e"
+                color: currentTheme.theme.colors.warning
             }
         ];
     }, [selectedMonth, selectedYear]);
 
     return (
         <DashboardContainer>
-            <ContentHeader title="Dashboard" lineColor="#4e41f0">
+            <ContentHeader title="Dashboard" lineColor={currentTheme.theme.colors.success}>
             <SelectInput options={months} onSelectInputChange={e => setSelectedMonth(e.target.value)} defaultValue={selectedMonth}/>
                 <SelectInput options={years}  onSelectInputChange={e => setSelectedYear(e.target.value)} defaultValue={selectedYear}/>
             </ContentHeader>
@@ -231,7 +233,7 @@ const Dashboard: React.FC = () => {
                     amount={finalBalance}
                     label="atualizado com base nas entradas e saídas"
                     icon={IconEnums.DOLLAR}
-                    color="#4e41f0"
+                    color={currentTheme.theme.colors.success}
                 />
 
                 <WalletBox 
@@ -239,7 +241,7 @@ const Dashboard: React.FC = () => {
                     amount={totalProfit}
                     label="atualizado com base nas entradas e saídas"
                     icon={IconEnums.ARROW_UP}
-                    color="#f7931b"
+                    color={currentTheme.theme.colors.info}
                 />
 
                 <WalletBox 
@@ -247,7 +249,7 @@ const Dashboard: React.FC = () => {
                     amount={totalExpenses}
                     label="atualizado com base nas entradas e saídas"
                     icon={IconEnums.ARROW_DOWN}
-                    color="#e44c4e"
+                    color={currentTheme.theme.colors.warning}
                 />
 
                 <WalletEvaluation
@@ -261,8 +263,8 @@ const Dashboard: React.FC = () => {
 
                 <HistoryChart 
                     data={profitLossHistory}
-                    profitLineColor="#f7931b"
-                    lossLineColor="#e44c4e"
+                    profitLineColor={currentTheme.theme.colors.info}
+                    lossLineColor={currentTheme.theme.colors.warning}
                 />
 
                 <MonthlyRecurrentEventualChart
