@@ -30,7 +30,7 @@ const Aside: React.FC = () => {
                     {isMenuOpen? <MdClose/> : <MdMenu />}
                 </ToggleMenu>
 
-                <LogoImage src={logoSvg} alt="Logo Piggy Bank" />
+                <LogoImage logoImg={logoSvg} />
                 <Title>Piggy Bank</Title>
             </AsideHeader>
 

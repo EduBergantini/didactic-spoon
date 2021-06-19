@@ -4,6 +4,9 @@ import styled, {css} from "styled-components";
 interface IMobileAsideContainerProps {
     isMenuOpen: boolean;
 }
+interface IBackgroundImage {
+    logoImg: string;
+}
 
 export const AsideContainer = styled.div<IMobileAsideContainerProps>`
     grid-area: AS;
@@ -31,7 +34,9 @@ export const AsideHeader = styled.header`
     align-items: center;
     height: 70px;
 `;
-export const LogoImage = styled.img`
+export const LogoImage = styled.div<IBackgroundImage>`
+    background-color: ${props => props.theme.colors.primaryFontColor};
+    mask: url(${props => props.logoImg}) no-repeat center / contain;
     width: 40px;
     height: 40px;
     @media(max-width: 600px) {
