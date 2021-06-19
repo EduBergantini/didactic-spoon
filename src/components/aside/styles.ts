@@ -78,8 +78,9 @@ export const ToggleMenu = styled.button`
     height: 40px;
     border-radius: 5px;
     font-size: 22px;
-    background-color: ${props => props.theme.colors.warning};
+    border: 1px solid ${props => props.theme.colors.primaryFontColor};
     color: ${props => props.theme.colors.primaryFontColor};
+    background-color: transparent;
     transition: opacity .3s;
 
     &:hover {
